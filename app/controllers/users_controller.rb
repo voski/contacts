@@ -39,6 +39,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    @favorite_contact_shares = @user.contact_shares.where(favorite: true)
+    # @favorite_contacts = Contact.select(*).join("JOIN contact_shares ON contact.id = contact_share.contact_id").where("contact.user_id = #{@user.id} AND contact_shares.favorite = true")
+
+    render json: {contacts: @user.contacts.where(favorite: true), contact_shares: @favorite_contacts}
+  end
+
   private
 
     def user_params

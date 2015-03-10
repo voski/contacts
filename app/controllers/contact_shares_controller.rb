@@ -6,6 +6,7 @@ class ContactSharesController < ApplicationController
       render json: @contact_share
     else
       render json: @contact_share.errors.full_messages, status: :unprocessable_entity
+    end
   end
 
   def destroy

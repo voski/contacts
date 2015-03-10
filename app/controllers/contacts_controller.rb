@@ -19,9 +19,8 @@ class ContactsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @shared_contacts = @user.shared_contacts
 
-    render json: {contacts: @user.contacts, shared_contacts: @shared_contacts} 
+    render(json: {contacts: @user.contacts, shared_contacts: @user.shared_contacts})
   end
 
   def show
